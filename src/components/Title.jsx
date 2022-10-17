@@ -1,40 +1,29 @@
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, Container } from "@mui/material";
 import React from "react";
 
 const Title = () => {
   return (
     <Box
       style={{
-        height: 60,
-        width: "95%",
-        backgroundColor: "#008e76",
-        position: "absolute",
-        top: 150,
-        borderRadius: 2,
-        padding: 6,
-        display:'flex',
-        flexDirection:'column',
-        //justifyContent:'center',
-        alignItems:'center',
-
-
+        height: 40,
+        width: "100%",
+        backgroundColor: "#006064",
+        position: "sticky",
+        top: 0,
       }}
     >
-      <Typography color="black" fontWeight="bold" fontSize={20}>
-        Wir Unterstützen Sie für Ihre IT Bedürfnisse
-      </Typography>
-      <Container sx={{display:'flex', justifyContent:'space-around'}}>
-        <Button sx={{ color: "white", fontWeight: "bold",fontSize:16 }}>
-          360° Vr-Tours{" "}
+      <Container sx={{ display: "flex", justifyContent: "space-around" }}>
+        <Button sx={{ color: "white", fontWeight: "bold", fontSize: 16 }}>
+          360° Vr-Tours
         </Button>
-        <Button sx={{ color: "white", fontWeight: "bold",fontSize:16 }}>
-          Web Design
+        <Button sx={{ color: "white", fontWeight: "bold", fontSize: 16 }}>
+          Google Street View
         </Button>
-        <Button sx={{ color: "white", fontWeight: "bold",fontSize:16 }}>
-         Mobile Apps
+        <Button sx={{ color: "white", fontWeight: "bold", fontSize: 16 }}>
+          Beispiele
         </Button>
-        <Button sx={{ color: "white", fontWeight: "bold",fontSize:16 }}>
-          IT Support{" "}
+        <Button sx={{ color: "white", fontWeight: "bold", fontSize: 16 }}>
+          Anfrage
         </Button>
       </Container>
     </Box>

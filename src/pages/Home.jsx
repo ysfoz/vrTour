@@ -1,36 +1,75 @@
 import { Box, Container } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Title from "../components/Title";
-import VrField from "../components/VrField";
-import WebField from "../components/WebField";
-import MobileField from "../components/MobileField";
-import SupportField from "../components/SupportField";
+import Pano1 from "../assets/pano1.jpg";
+import Logo from "../assets/vr.png";
+import { ReactPhotoSphereViewer } from "react-photo-sphere-viewer";
+import BottumMenu from "../components/BottumMenu";
+import ContactForm from "../components/ContactForm";
+import ContactInfoCard from "../components/ContactInfoCard";
 
 const Home = () => {
+  const photoSphereRef = React.useRef();
+  const stopperMouseWheel = () => {
+    photoSphereRef.current.setOption("mousewheel", false);
+  };
+
+  useEffect(() => {
+    stopperMouseWheel();
+  }, []);
+  const long = "calc(100vh - 130px)";
   return (
-    <div style={{ width: "100%" }}>
+    <Box display="flex" justifyContent="center">
       <Box
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-        }}
+        maxWidth={"xl"}
+        display="flex"
+        flexDirection="column"
+        alignItems={"center"}
+        justifyContent="center"
       >
         <Navbar />
         <Title />
-        <Box sx={{marginTop:10}}>
-          <VrField />
-          <WebField />
-          <MobileField />
-          <SupportField />
+        <Box
+          sx={{
+            width: "100%",
+          }}
+        >
+          <ReactPhotoSphereViewer
+            ref={photoSphereRef}
+            // src={Pano1}
+            height={long}
+            width={"100%"}
+            loadingImg={Logo}
+            autorotateDelay={1000}
+            autorotateIdle={true}
+            autorotateSpeed="0.5rpm"
+            caption={"tess"}
+            navbar={["autorotate", "zoom", "move", "caption"]}
+            defaultZoomLvl={1}
+          ></ReactPhotoSphereViewer>
+          <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+            <ContactForm />
+            <Box
+              flex={1}
+              sx={{
+                "& > :not(style)": {
+                  m: 3,
+                  p:2,
+                  width: "80%",
+                  height:"85%"
+                }
+              }}
+            >
+              <ContactInfoCard />
+            </Box>
+          </Box>
         </Box>
         <Footer />
+        <BottumMenu />
       </Box>
-    </div>
+    </Box>
   );
 };
 
