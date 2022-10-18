@@ -1,5 +1,5 @@
-import { Box, Container } from "@mui/material";
-import React, { useEffect } from "react";
+import { Box } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Title from "../components/Title";
@@ -10,8 +10,11 @@ import BottumMenu from "../components/BottumMenu";
 import ContactForm from "../components/ContactForm";
 import ContactInfoCard from "../components/ContactInfoCard";
 import Whatsapp from "../components/Whatsapp";
+import Toasty from "../components/Toasty";
 
 const Home = () => {
+  const [toastyMessage, setToastyMessage] = useState({});
+  console.log("🚀 ~ file: Home.jsx ~ line 17 ~ Home ~ toastyMessage", toastyMessage)
   const photoSphereRef = React.useRef();
   const stopperMouseWheel = () => {
     photoSphereRef.current.setOption("mousewheel", false);
@@ -32,6 +35,7 @@ const Home = () => {
       >
         <Navbar />
         <Title />
+       
         <Box
           sx={{
             width: "100%",
@@ -47,20 +51,21 @@ const Home = () => {
             autorotateIdle={true}
             autorotateSpeed="0.5rpm"
             caption={"tess"}
+            description="test"
             navbar={["autorotate", "zoom", "move", "caption"]}
             defaultZoomLvl={1}
           ></ReactPhotoSphereViewer>
           <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
-            <ContactForm />
+            <ContactForm setToastyMessage={setToastyMessage} />
             <Box
               flex={1}
               sx={{
                 "& > :not(style)": {
                   m: 3,
-                  p:2,
+                  p: 2,
                   width: "80%",
-                  height:"85%"
-                }
+                  height: "85%",
+                },
               }}
             >
               <ContactInfoCard />
@@ -69,7 +74,8 @@ const Home = () => {
         </Box>
         <Footer />
         <BottumMenu />
-        <Whatsapp/>
+        <Whatsapp />
+        {toastyMessage && <Toasty toastyMessage={toastyMessage} setToastyMessage={setToastyMessage}/> }
       </Box>
     </Box>
   );

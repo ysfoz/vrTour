@@ -1,3 +1,4 @@
+import React, { useRef} from "react";
 import {
   Button,
   TextField,
@@ -9,22 +10,22 @@ import {
 } from "@mui/material";
 import { boolean, number, object, string } from "yup";
 import { useFormik } from "formik";
-import SendIcon from '@mui/icons-material/Send';
+import SendIcon from "@mui/icons-material/Send";
+import emailjs from "@emailjs/browser";
+const ContactForm = ({ setToastyMessage }) => {
+  const form = useRef();
 
-const ContactForm = () => {
   const validationSchema = object({
     email: string("Schreiben Sie bitte Ihre Email!")
       .required("Email ist nötig!")
       .email("Email ist ungültig!"),
-    name: string("Schreiben Sie bitte Ihre Name!")
-      .required("Name ist nötig!"),
+    name: string("Schreiben Sie bitte Ihre Name!").required("Name ist nötig!"),
     phone: number("Schreiben Sie bitte Ihre Telefonnummer!"),
     firma: string("Schreiben Sie bitte Ihre Firmaname "),
-    message: string("Schreiben Sie bitte Ihre Anfrage!")
-      .required("Nachricht ist  nötig!"),
-    securityPolicy:boolean()
-
-   
+    message: string("Schreiben Sie bitte Ihre Anfrage!").required(
+      "Nachricht ist  nötig!"
+    ),
+    securityPolicy: boolean(),
   });
 
   const formik = useFormik({
@@ -37,7 +38,42 @@ const ContactForm = () => {
       securityPolicy: false,
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => console.log("test"),
+    onSubmit: (values, actions) => {
+      if (values.securityPolicy) {
+        emailjs
+          .send(
+            process.env.REACT_APP_FORMIK_SERVICE_ID,
+            process.env.REACT_APP_FORMIK_TEMPLATE_ID,
+            values,
+            process.env.REACT_APP_PUBLIC_KEY
+          )
+          .then(
+            (result) => {
+              setToastyMessage({
+                success: true,
+                message: "Der Nachricht wurde geschickt!",
+              });
+              actions.setSubmitting(false);
+              actions.resetForm();
+              setTimeout(() => {
+                setToastyMessage({});
+              }, 5000);
+            },
+            (error) => {
+              console.log(error.text);
+            }
+          );
+      } else {
+        setToastyMessage({
+          success: false,
+          message: "Der Nachricht konnte nicht geschickt werden!",
+        });
+        actions.setSubmitting(false);
+        setTimeout(() => {
+          setToastyMessage({});
+        }, 5000);
+      }
+    },
   });
 
   return (
@@ -50,13 +86,14 @@ const ContactForm = () => {
         <Typography variant="h4" textAlign={"center"}>
           Anfrage Stellen!
         </Typography>
-        <Box component="form" onSubmit={formik.handleSubmit} >
+        <Box component="form" ref={form} onSubmit={formik.handleSubmit}>
           <TextField
-            sx={{ width: "47%", margin: 1, }}
+            sx={{ width: "47%", margin: 1 }}
             variant="standard"
             margin="normal"
             required
             id="name"
+            type={"text"}
             label="name"
             name="name"
             autoComplete="name"
@@ -71,6 +108,7 @@ const ContactForm = () => {
             variant="standard"
             margin="normal"
             required
+            type={"email"}
             id="email"
             label="email"
             name="email"
@@ -99,6 +137,7 @@ const ContactForm = () => {
             margin="normal"
             id="firma"
             label="firma"
+            type={"text"}
             name="firma"
             autoComplete="firma"
             value={formik.values.firma}
@@ -107,10 +146,11 @@ const ContactForm = () => {
             helperText={formik.touched.firma && formik.errors.firma}
           />
           <TextField
-            sx={{ margin: 1, width:"97%" }}
+            sx={{ margin: 1, width: "97%" }}
             variant="standard"
             margin="normal"
             id="message"
+            type={"text"}
             label="nachricht"
             name="message"
             fullWidth
@@ -125,13 +165,21 @@ const ContactForm = () => {
           />
 
           <FormControlLabel
-            sx={{ margin: 1}}
-            control={<Checkbox value="remember" color="primary" />}
+          
+          defaultValue={false}
+            id="securityPolicy"
+            name="securityPolicy"
+            sx={{ margin: 1 }}
+            onChange={formik.handleChange}
+            control={
+              <Checkbox value={formik.values.securityPolicy} color="primary"  checked={formik.values.securityPolicy ? true : false} />
+            }
             label="Ich habe die Datenschutzerklärung zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden."
           />
           <Button
+            disabled={formik.isSubmitting}
             type="submit"
-           endIcon={<SendIcon/>}
+            endIcon={<SendIcon />}
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
