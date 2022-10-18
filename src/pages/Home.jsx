@@ -9,6 +9,7 @@ import { ReactPhotoSphereViewer } from "react-photo-sphere-viewer";
 import BottumMenu from "../components/BottumMenu";
 import ContactForm from "../components/ContactForm";
 import ContactInfoCard from "../components/ContactInfoCard";
+import Whatsapp from "../components/Whatsapp";
 
 const Home = () => {
   const photoSphereRef = React.useRef();
@@ -68,6 +69,7 @@ const Home = () => {
         </Box>
         <Footer />
         <BottumMenu />
+        <Whatsapp/>
       </Box>
     </Box>
   );

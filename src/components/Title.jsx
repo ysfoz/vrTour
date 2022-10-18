@@ -10,6 +10,7 @@ const Title = () => {
         backgroundColor: "#006064",
         position: "sticky",
         top: 0,
+        zIndex:2
       }}
     >
       <Container sx={{ display: "flex", justifyContent: "space-around" }}>
