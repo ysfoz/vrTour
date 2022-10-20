@@ -1,8 +1,6 @@
-import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
-import { Typography } from "@mui/material";
+import { Typography, Paper, styled } from "@mui/material";
 
-const Toasty = ({ toastyMessage, setToastyMessage }) => {
+const Toasty = ({ toastyMessage  }) => {
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     color: theme.palette.text.secondary,

@@ -1,4 +1,4 @@
-import React, { useRef} from "react";
+import { useRef } from "react";
 import {
   Button,
   TextField,
@@ -7,11 +7,21 @@ import {
   Box,
   Typography,
   Container,
+  styled,
 } from "@mui/material";
 import { boolean, number, object, string } from "yup";
 import { useFormik } from "formik";
 import SendIcon from "@mui/icons-material/Send";
 import emailjs from "@emailjs/browser";
+
+const StyledInput = styled(TextField)(({ theme }) => ({
+  marginRight:5,
+    width: "48%",
+  [theme.breakpoints.down("sm")]:{
+    width: "100%",
+  }
+}));
+
 const ContactForm = ({ setToastyMessage }) => {
   const form = useRef();
 
@@ -77,7 +87,7 @@ const ContactForm = ({ setToastyMessage }) => {
   });
 
   return (
-    <Box component="main" flex={1.5} padding={5} maxWidth={876}>
+    <Box component="main" flex={1.5} padding={1}>
       <Container
         sx={{
           "& > :not(style)": { m: 2, p: 1 },
@@ -86,9 +96,8 @@ const ContactForm = ({ setToastyMessage }) => {
         <Typography variant="h4" textAlign={"center"}>
           Anfrage Stellen!
         </Typography>
-        <Box component="form" ref={form} onSubmit={formik.handleSubmit}>
-          <TextField
-            sx={{ width: "47%", margin: 1 }}
+        <Box component="form" ref={form} onSubmit={formik.handleSubmit} >
+          <StyledInput
             variant="standard"
             margin="normal"
             required
@@ -103,8 +112,7 @@ const ContactForm = ({ setToastyMessage }) => {
             error={formik.touched.name && Boolean(formik.errors.name)}
             helperText={formik.touched.name && formik.errors.name}
           />
-          <TextField
-            sx={{ width: "47%", margin: 1 }}
+          <StyledInput
             variant="standard"
             margin="normal"
             required
@@ -118,8 +126,7 @@ const ContactForm = ({ setToastyMessage }) => {
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
           />
-          <TextField
-            sx={{ width: "47%", margin: 1 }}
+          <StyledInput
             variant="standard"
             margin="normal"
             id="phone"
@@ -131,8 +138,7 @@ const ContactForm = ({ setToastyMessage }) => {
             error={formik.touched.phone && Boolean(formik.errors.phone)}
             helperText={formik.touched.phone && formik.errors.phone}
           />
-          <TextField
-            sx={{ width: "47%", margin: 1 }}
+          <StyledInput
             variant="standard"
             margin="normal"
             id="firma"
@@ -146,7 +152,6 @@ const ContactForm = ({ setToastyMessage }) => {
             helperText={formik.touched.firma && formik.errors.firma}
           />
           <TextField
-            sx={{ margin: 1, width: "97%" }}
             variant="standard"
             margin="normal"
             id="message"
@@ -165,16 +170,23 @@ const ContactForm = ({ setToastyMessage }) => {
           />
 
           <FormControlLabel
-          
-          defaultValue={false}
+            defaultValue={false}
             id="securityPolicy"
             name="securityPolicy"
-            sx={{ margin: 1 }}
+            sx={{ margin: 1, fontSize:"12px"}}
+            m={1}
+            
             onChange={formik.handleChange}
             control={
-              <Checkbox value={formik.values.securityPolicy} color="primary"  checked={formik.values.securityPolicy ? true : false} />
+              <Checkbox
+                value={formik.values.securityPolicy}
+                color="primary"
+                checked={formik.values.securityPolicy ? true : false}
+                size={"small"}
+                
+              />
             }
-            label="Ich habe die Datenschutzerklärung zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden."
+            label={<Typography variant="body3" color="textSecondary">Ich habe die Datenschutzerklärung zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden.</Typography>}
           />
           <Button
             disabled={formik.isSubmitting}

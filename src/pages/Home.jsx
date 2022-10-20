@@ -1,5 +1,5 @@
-import { Box } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Box, Stack } from "@mui/material";
+import { useEffect, useState, useRef } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Title from "../components/Title";
@@ -14,8 +14,7 @@ import Toasty from "../components/Toasty";
 
 const Home = () => {
   const [toastyMessage, setToastyMessage] = useState({});
-  console.log("🚀 ~ file: Home.jsx ~ line 17 ~ Home ~ toastyMessage", toastyMessage)
-  const photoSphereRef = React.useRef();
+  const photoSphereRef = useRef();
   const stopperMouseWheel = () => {
     photoSphereRef.current.setOption("mousewheel", false);
   };
@@ -26,56 +25,32 @@ const Home = () => {
   const long = "calc(100vh - 130px)";
   return (
     <Box display="flex" justifyContent="center">
-      <Box
-        maxWidth={"xl"}
-        display="flex"
-        flexDirection="column"
-        alignItems={"center"}
-        justifyContent="center"
-      >
+      <Box maxWidth={"xl"}>
         <Navbar />
         <Title />
-       
-        <Box
-          sx={{
-            width: "100%",
-          }}
-        >
-          <ReactPhotoSphereViewer
-            ref={photoSphereRef}
-            // src={Pano1}
-            height={long}
-            width={"100%"}
-            loadingImg={Logo}
-            autorotateDelay={1000}
-            autorotateIdle={true}
-            autorotateSpeed="0.5rpm"
-            caption={"tess"}
-            description="test"
-            navbar={["autorotate", "zoom", "move", "caption"]}
-            defaultZoomLvl={1}
-          ></ReactPhotoSphereViewer>
-          <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
-            <ContactForm setToastyMessage={setToastyMessage} />
-            <Box
-              flex={1}
-              sx={{
-                "& > :not(style)": {
-                  m: 3,
-                  p: 2,
-                  width: "80%",
-                  height: "85%",
-                },
-              }}
-            >
-              <ContactInfoCard />
-            </Box>
-          </Box>
-        </Box>
+        <ReactPhotoSphereViewer
+          ref={photoSphereRef}
+          src={Pano1}
+          height={long}
+          width={"100%"}
+          loadingImg={Logo}
+          autorotateDelay={1000}
+          autorotateIdle={true}
+          autorotateSpeed="0.5rpm"
+          caption={"tess"}
+          description="test"
+          navbar={["autorotate", "zoom", "move", "caption"]}
+          defaultZoomLvl={1}
+        ></ReactPhotoSphereViewer>
+        <Stack   direction={{ md: 'row'}} alignItems="center"  >
+          <ContactForm setToastyMessage={setToastyMessage} />
+          <ContactInfoCard />
+        </Stack>
+
         <Footer />
         <BottumMenu />
         <Whatsapp />
-        {toastyMessage && <Toasty toastyMessage={toastyMessage} setToastyMessage={setToastyMessage}/> }
+        {toastyMessage && <Toasty toastyMessage={toastyMessage} />}
       </Box>
     </Box>
   );
