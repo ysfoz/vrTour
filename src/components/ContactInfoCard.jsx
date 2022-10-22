@@ -60,7 +60,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 
 const ContactInfoCard = () => {
   return (
-    <StyledBox>
+    <StyledBox id="contactinfo" name="contactinfo">
       <Paper elevation={3} sx={{ paddingBlock: 5 }}>
         <Container>
           <Typography variant="h5" textAlign={"center"} mb={3}>

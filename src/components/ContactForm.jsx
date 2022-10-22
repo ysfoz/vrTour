@@ -87,7 +87,7 @@ const ContactForm = ({ setToastyMessage }) => {
   });
 
   return (
-    <Box component="main" flex={1.5} padding={1}>
+    <Box id="contactform" name="contactform" component="main" flex={1.5} padding={1}>
       <Container
         sx={{
           "& > :not(style)": { m: 2, p: 1 },

@@ -2,7 +2,6 @@ import { Box, Button, styled } from "@mui/material";
 
 const StyledButton = styled(Button)(({ theme }) => ({
   color: "white",
-  // fontWeight: "bold",
   textTransform: "none",
   fontSize: 16,
   [theme.breakpoints.down("md")]:{
@@ -26,13 +25,18 @@ const StyledBox = styled(Box)(({ theme }) => ({
   justifyContent: "space-around",
 }));
 
-const Title = () => {
+const Title = ({locations}) => {
+  const {vrTours,streetView,beispiele,contactForm} = locations
+
+  const  handleClick = (location) =>{
+    window.scrollTo(0,location)
+  }
   return (
     <StyledBox>
-      <StyledButton>360° Vr-Tours</StyledButton>
-      <StyledButton>Google Street View</StyledButton>
-      <StyledButton>Beispiele</StyledButton>
-      <StyledButton>Anfrage</StyledButton>
+      <StyledButton onClick={()=> handleClick(vrTours)}>360° Vr-Tours</StyledButton>
+      <StyledButton  onClick={()=>handleClick(streetView)}>Google Street View</StyledButton>
+      <StyledButton  onClick={()=>handleClick(beispiele)}>Beispiele</StyledButton>
+      <StyledButton  onClick={()=>handleClick(contactForm)}>Anfrage</StyledButton>
     </StyledBox>
   );
 };
