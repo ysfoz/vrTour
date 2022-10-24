@@ -7,6 +7,7 @@ import {
   Container,
 } from "@mui/material";
 import ThreeDRotationIcon from "@mui/icons-material/ThreeDRotation";
+import CircularMotion from "./CircularMotion"
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   pointerEvents: "none",
@@ -56,7 +57,10 @@ const Description = ({locations}) => {
       </StyledLeftStack>
       <StyledRightStack alignItems={"center"} spacing={1}>
         <StyledTitle>Drag it</StyledTitle>
-        <ThreeDRotationIcon fontSize="large" color="primary" />
+        <CircularMotion icon={<ThreeDRotationIcon fontSize="large" color="primary" />}/>
+
+        {/* <ThreeDRotationIcon fontSize="large" color="primary" /> */}
+      
       </StyledRightStack>
     </StyledContainer>
   );

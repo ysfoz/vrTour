@@ -106,7 +106,7 @@ const ContactForm = ({ setToastyMessage }) => {
             label="name"
             name="name"
             autoComplete="name"
-            autoFocus
+            // autoFocus
             value={formik.values.name}
             onChange={formik.handleChange}
             error={formik.touched.name && Boolean(formik.errors.name)}
