@@ -15,11 +15,11 @@ import SendIcon from "@mui/icons-material/Send";
 import emailjs from "@emailjs/browser";
 
 const StyledInput = styled(TextField)(({ theme }) => ({
-  marginRight:5,
-    width: "48%",
-  [theme.breakpoints.down("sm")]:{
+  marginRight: 5,
+  width: "48%",
+  [theme.breakpoints.down("sm")]: {
     width: "100%",
-  }
+  },
 }));
 
 const ContactForm = ({ setToastyMessage }) => {
@@ -87,7 +87,7 @@ const ContactForm = ({ setToastyMessage }) => {
   });
 
   return (
-    <Box id="contactform" name="contactform" component="main" flex={1.5} padding={1}>
+    <Box component="main" flex={1.5} padding={1}>
       <Container
         sx={{
           "& > :not(style)": { m: 2, p: 1 },
@@ -96,7 +96,12 @@ const ContactForm = ({ setToastyMessage }) => {
         <Typography variant="h4" textAlign={"center"}>
           Anfrage Stellen!
         </Typography>
-        <Box component="form" ref={form} onSubmit={formik.handleSubmit} >
+        <Box
+          
+          component="form"
+          ref={form}
+          onSubmit={formik.handleSubmit}
+        >
           <StyledInput
             variant="standard"
             margin="normal"
@@ -106,7 +111,6 @@ const ContactForm = ({ setToastyMessage }) => {
             label="name"
             name="name"
             autoComplete="name"
-            // autoFocus
             value={formik.values.name}
             onChange={formik.handleChange}
             error={formik.touched.name && Boolean(formik.errors.name)}
@@ -173,9 +177,8 @@ const ContactForm = ({ setToastyMessage }) => {
             defaultValue={false}
             id="securityPolicy"
             name="securityPolicy"
-            sx={{ margin: 1, fontSize:"12px"}}
+            sx={{ margin: 1, fontSize: "12px" }}
             m={1}
-            
             onChange={formik.handleChange}
             control={
               <Checkbox
@@ -183,10 +186,15 @@ const ContactForm = ({ setToastyMessage }) => {
                 color="primary"
                 checked={formik.values.securityPolicy ? true : false}
                 size={"small"}
-                
               />
             }
-            label={<Typography variant="body3" color="textSecondary">Ich habe die Datenschutzerklärung zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden.</Typography>}
+            label={
+              <Typography variant="body3" color="textSecondary">
+                Ich habe die Datenschutzerklärung zur Kenntnis genommen. Ich
+                stimme zu, dass meine Angaben und Daten zur Beantwortung meiner
+                Anfrage elektronisch erhoben und gespeichert werden.
+              </Typography>
+            }
           />
           <Button
             disabled={formik.isSubmitting}

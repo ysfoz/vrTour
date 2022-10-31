@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Box, Button, Container, styled, Typography } from "@mui/material";
+import { Container, styled } from "@mui/material";
 
 const cardVariants = {
   offscreen: {

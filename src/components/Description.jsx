@@ -39,12 +39,13 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }));
 
 
-const Description = ({locations}) => {
-  const  handleClick = (location) =>{
-    window.scrollTo(0,location)
+const Description = () => {
+  const  handleClick = () =>{
+    window.scrollTo(0,document.body.scrollHeight)
+   
   }
 
-  const {contactInfo} = locations
+
   return (
     <StyledContainer >
       <StyledLeftStack alignItems={"center"} spacing={1}>
@@ -53,14 +54,11 @@ const Description = ({locations}) => {
           Ich biete Ihnen hochwertige Panorama für Google Street View oder Ihre
           Webseite
         </StyledText>
-        <StyledButton onClick={()=>handleClick(contactInfo)} variant="contained">Kontakt</StyledButton>
+        <StyledButton onClick={handleClick} variant="contained">Kontakt</StyledButton>
       </StyledLeftStack>
       <StyledRightStack alignItems={"center"} spacing={1}>
         <StyledTitle>Drag it</StyledTitle>
         <CircularMotion icon={<ThreeDRotationIcon fontSize="large" color="primary" />}/>
-
-        {/* <ThreeDRotationIcon fontSize="large" color="primary" /> */}
-      
       </StyledRightStack>
     </StyledContainer>
   );

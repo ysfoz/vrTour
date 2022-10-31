@@ -62,7 +62,7 @@ const BottumMenu = () => {
         <Typography>|</Typography>
         <StyledTextButton>Datenshutz</StyledTextButton>
       </StyledContainer>
-      <StyledContainer>
+      <StyledContainer  >
         <img src={Logo} style={{ width: 40 }} />
         <Typography fontSize={14}> www.webseite.de | © 2022 </Typography>
       </StyledContainer>

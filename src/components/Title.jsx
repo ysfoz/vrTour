@@ -20,23 +20,25 @@ const StyledBox = styled(Box)(({ theme }) => ({
   backgroundColor: "#006064",
   position: "sticky",
   top: 0,
-  zIndex: 2,
+  zIndex: 3,
   display: "flex",
   justifyContent: "space-around",
+  
 }));
 
 const Title = ({locations}) => {
-  const {vrTours,streetView,beispiele,contactForm} = locations
+  const {vrTours,streetView,beispiele} = locations
 
   const  handleClick = (location) =>{
     window.scrollTo(0,location)
+    
   }
   return (
     <StyledBox>
       <StyledButton onClick={()=> handleClick(vrTours)}>360° Vr-Tours</StyledButton>
       <StyledButton  onClick={()=>handleClick(streetView)}>Google Street View</StyledButton>
       <StyledButton  onClick={()=>handleClick(beispiele)}>Beispiele</StyledButton>
-      <StyledButton  onClick={()=>handleClick(contactForm)}>Anfrage</StyledButton>
+      <StyledButton  onClick={()=>handleClick(document.body.scrollHeight)}>Anfrage</StyledButton>
     </StyledBox>
   );
 };

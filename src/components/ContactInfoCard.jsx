@@ -38,13 +38,11 @@ const ContactItem = styled(Paper)(({ theme }) => ({
 
 const StyledBox = styled(Box)(({ theme }) => ({
   flex: 1,
-  display:"flex",
-  justifyContent:"center",
+  display: "flex",
+  justifyContent: "center",
 
-  
-  [theme.breakpoints.down("md")]:{
+  [theme.breakpoints.down("md")]: {
     marginBottom: 20,
-    padding:5,
     width: "100%",
     height: "85%",
   },
@@ -60,7 +58,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 
 const ContactInfoCard = () => {
   return (
-    <StyledBox id="contactinfo" name="contactinfo">
+    <StyledBox >
       <Paper elevation={3} sx={{ paddingBlock: 5 }}>
         <Container>
           <Typography variant="h5" textAlign={"center"} mb={3}>
@@ -106,7 +104,7 @@ const ContactInfoCard = () => {
             Erreichbarkeit
           </Typography>
 
-          <Stack spacing={2}>
+          <Stack  spacing={2}>
             <Item>
               <AccessTimeIcon />
               <Typography>Montag - Freitag: 09:00 bis 17:00 Uhr</Typography>

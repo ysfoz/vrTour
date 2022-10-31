@@ -59,7 +59,7 @@ const StyledText = styled(Typography)(({ theme }) => ({
 
 const Footer = () => {
   return (
-    <StyledBox>
+    <StyledBox  >
       <StyledContainer sx={{ gap: 2 }}>
         <img src={Logo} style={{ width: 150 }} />
         <Typography

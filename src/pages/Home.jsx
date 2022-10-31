@@ -1,4 +1,4 @@
-import { Box, Button, Stack, styled, Typography } from "@mui/material";
+import { Box, Stack, styled, Typography } from "@mui/material";
 import { useEffect, useState, useRef } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -16,6 +16,9 @@ import { Description } from "../components/Description";
 import VrTours from "../components/VrTours";
 import StreetView from "../components/StreetView";
 import Beispiele from "../components/Beispiele";
+import MapAdvantages from "../components/MapAdvantages";
+
+import { DivederMain, DivederVr } from "../components/DivederComp";
 
 const Home = () => {
   const [toastyMessage, setToastyMessage] = useState({});
@@ -37,19 +40,20 @@ const Home = () => {
       document.getElementById("streetview").getBoundingClientRect().y - 40;
     const beispiele =
       document.getElementById("beispiele").getBoundingClientRect().y - 40;
-    const contactForm =
-      document.getElementById("contactform").getBoundingClientRect().y - 40;
-    const contactInfo =
-      document.getElementById("contactinfo").getBoundingClientRect().y - 40;
+   
+   
 
-    setLocations({ vrTours, streetView, beispiele, contactForm, contactInfo });
+    setLocations({ vrTours, streetView, beispiele});
   };
 
+  const w = window.innerWidth;
   useEffect(() => {
     getLocation();
-  }, []);
+  }, [w]);
 
-  const long = "calc(100vh - 130px)";
+
+  const HeightBig = "calc(100vh - 130px)";
+  const HeightSmall = "calc(100vh - 190px)";
   return (
     <Box display="flex" justifyContent="center">
       <Box maxWidth={"xl"} id="test">
@@ -58,7 +62,7 @@ const Home = () => {
         <ReactPhotoSphereViewer
           ref={photoSphereRef}
           // src={Pano1}
-          height={long}
+          height={w < 600 ? HeightSmall : HeightBig}
           width={"100%"}
           loadingImg={Logo}
           autorotateDelay={1000}
@@ -71,10 +75,24 @@ const Home = () => {
         ></ReactPhotoSphereViewer>
         <Description locations={locations} />
 
-        <VrTours />
+        <Stack mt={7} mb={7} id="vrtours" name="vrtours" divider={<DivederVr />}>
+          <VrTours left />
+          <VrTours right />
+          <VrTours left />
+          <VrTours right />
+        </Stack>
+        <DivederMain />
         <StreetView />
+        <MapAdvantages />
+        <DivederMain />
         <Beispiele />
-        <Stack direction={{ md: "row" }} alignItems="center">
+        <DivederMain />
+        <Stack
+       
+          direction={{ md: "row" }}
+          alignItems="center"
+          mb={4}
+        >
           <ContactForm setToastyMessage={setToastyMessage} />
           <ContactInfoCard />
         </Stack>
