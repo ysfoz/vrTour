@@ -1,29 +1,29 @@
-import { Container,styled, Typography } from "@mui/material";
-import React from "react";
+import { Container, styled, Typography } from "@mui/material";
 
-
-
+// STYLES
 const StyledContainer = styled(Container)(({ theme }) => ({
   display: "flex",
-  flex:1,
+  flex: 1,
   flexDirection: "column",
   gap: 10,
   alignItems: "center",
   justifyContent: "center",
   color: theme.palette.text.secondary,
-  
 }));
+
 const Title = styled(Typography)(({ theme }) => ({
   fontSize: 26,
   textAlign: "center",
   color: theme.palette.text.primary,
 }));
+
 const Desc = styled(Typography)(({ theme }) => ({
   fontSize: 14,
   textAlign: "center",
 }));
 
 const PositivesContainer = styled(Container)(({ theme }) => ({}));
+
 const Benefits = styled(Typography)(({ theme }) => ({
   fontSize: 14,
   lineHeight: 2,

@@ -1,9 +1,8 @@
-import { Box, Button, IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { useState } from "react";
-import image from "../assets/chicago.jpg";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 
-const w = window.innerWidth;
+import image from "../assets/chicago.jpg";
 
 const VrIframe = () => {
   const [source, setSource] = useState({ vrTour: null, visible: true });
@@ -47,7 +46,7 @@ const VrIframe = () => {
         <iframe
           loading="lazy"
           width="100%"
-          height= { 500}
+          height={500}
           src={source.vrTour}
           allowFullScreen=""
           frameBorder={0}

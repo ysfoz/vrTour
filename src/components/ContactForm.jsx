@@ -14,6 +14,7 @@ import { useFormik } from "formik";
 import SendIcon from "@mui/icons-material/Send";
 import emailjs from "@emailjs/browser";
 
+// STYLES
 const StyledInput = styled(TextField)(({ theme }) => ({
   marginRight: 5,
   width: "48%",
@@ -96,12 +97,7 @@ const ContactForm = ({ setToastyMessage }) => {
         <Typography variant="h4" textAlign={"center"}>
           Anfrage Stellen!
         </Typography>
-        <Box
-          
-          component="form"
-          ref={form}
-          onSubmit={formik.handleSubmit}
-        >
+        <Box component="form" ref={form} onSubmit={formik.handleSubmit}>
           <StyledInput
             variant="standard"
             margin="normal"

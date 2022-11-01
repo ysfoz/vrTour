@@ -2,6 +2,7 @@ import { Box, styled, AppBar } from "@mui/material";
 
 import Logo from "../assets/vr.png";
 
+// STYLES
 const StyledBox = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",

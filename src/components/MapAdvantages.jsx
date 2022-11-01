@@ -1,13 +1,11 @@
 import { Box, Container, Link, Stack, styled, Typography } from "@mui/material";
-import React from "react";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import ThreeSixtyIcon from "@mui/icons-material/ThreeSixty";
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
-import "./style.css";
 
-
+// STYLES
 const StyledBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -15,14 +13,16 @@ const StyledBox = styled(Box)(({ theme }) => ({
   gap: 30,
   marginBlock: 50,
   color: theme.palette.text.secondary,
-  
 }));
+
 const StyledContainer = styled(Stack)(({ theme }) => ({}));
+
 const Title = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   fontSize: 26,
   textAlign: "center",
 }));
+
 const Desc = styled(Typography)(({ theme }) => ({
   fontSize: 14,
   textAlign: "center",
@@ -40,10 +40,12 @@ const BenefitsContainer = styled(Container)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
 }));
+
 const Benefits = styled(Typography)(({ theme }) => ({
   fontSize: 14,
   textAlign: "center",
 }));
+
 const benefitsItems = [
   [
     <RemoveRedEyeIcon color="primary" />,
@@ -86,9 +88,9 @@ const MapAdvantages = () => {
         360°-Touren können die Ladenbesucher vorab einen Blick in dein Geschäft
         werfen. Das erhöht deine Onlinesichtbarkeit.
       </Desc>
-      <StyledContainer direction={{lg:"row"}} spacing={{xs:5,lg:3}}>
-        {benefitsItems.map(([icon, desc],index) => (
-          <Item icon={icon} desc={desc} key={index}/>
+      <StyledContainer direction={{ lg: "row" }} spacing={{ xs: 5, lg: 3 }}>
+        {benefitsItems.map(([icon, desc], index) => (
+          <Item icon={icon} desc={desc} key={index} />
         ))}
       </StyledContainer>
       <UnderText color="secondary.light">

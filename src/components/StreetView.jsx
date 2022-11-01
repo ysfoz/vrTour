@@ -1,8 +1,10 @@
 import { Container, Stack, styled, Typography } from "@mui/material";
-import React from "react";
+
 import Gstv from "../assets/gstv.png";
 
+// STYLES
 const StyledBox = styled(Stack)(({ theme }) => ({}));
+
 const StyledContainer = styled(Container)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -11,17 +13,20 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   justifyContent: "center",
   color: theme.palette.text.secondary,
 }));
+
 const Title = styled(Typography)(({ theme }) => ({
   fontSize: 26,
   textAlign: "center",
   color: theme.palette.text.primary,
 }));
+
 const Desc = styled(Typography)(({ theme }) => ({
   fontSize: 14,
   textAlign: "center",
 }));
 
 const PositivesContainer = styled(Container)(({ theme }) => ({}));
+
 const Benefits = styled(Typography)(({ theme }) => ({
   fontSize: 14,
   lineHeight: 2,

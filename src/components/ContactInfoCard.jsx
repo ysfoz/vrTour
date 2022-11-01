@@ -13,6 +13,8 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
+
+// STYLES 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,

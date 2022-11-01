@@ -12,10 +12,12 @@ import image1 from "../assets/chicago.jpg";
 
 const style = { width: "100%", objectFit: "contain", borderRadius: 20 };
 
+// STYLES
 const StyledBox = styled(Box)(({ theme }) => ({
   overflow: "hidden",
   marginBottom: 20,
 }));
+
 const StyledContainer = styled(Container)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -25,13 +27,15 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   backgroundColor: "rgba(0,0,0,0.4)",
   color: "white",
 }));
+
 const StyledTitle = styled(Typography)(({ theme }) => ({
   fontWeight: "bold",
 }));
+
 const StyledButton = styled(Button)(({ theme }) => ({
   textTransform: "none",
-  color:"white",
-  borderColor:"#006064",
+  color: "white",
+  borderColor: "#006064",
   [theme.breakpoints.between("xs", "sm")]: {
     fontSize: 16,
   },
@@ -43,6 +47,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
     fontSize: 16,
   },
 }));
+
 const StyledButtonContainer = styled(Container)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
@@ -66,7 +71,7 @@ const Item = ({ title, image }) => {
                 {title}
               </StyledTitle>
               <StyledButtonContainer>
-                <StyledButton size="small" variant="outlined" >
+                <StyledButton size="small" variant="outlined">
                   Street View
                 </StyledButton>
                 <StyledButton size="small" variant="outlined">
@@ -84,7 +89,9 @@ const Item = ({ title, image }) => {
 const BeiSpiele = () => {
   return (
     <StyledBox id="beispiele" name="beispiele">
-      <StyledTitle fontSize={28} textAlign="center">Beispile</StyledTitle>
+      <StyledTitle fontSize={28} textAlign="center">
+        Beispile
+      </StyledTitle>
       <Grid container spacing={3} direction={{ xs: "column", sm: "row" }}>
         <Item title="Schule" image={image1} />
         <Item title="Küchenstudio" image={image1} />
